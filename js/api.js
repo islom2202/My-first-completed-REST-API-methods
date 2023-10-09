@@ -2,8 +2,8 @@ import { create, citiesFilter, stateFilter, searchFilter } from "./crud.js"
 
 
 // GET data
-// const api = "https://users-table-list.onrender.com/data"
-const api = "https://islom2202.github.io/My-first-completed-REST-API-methods/db.json"
+const api = "https://users-table-list.onrender.com/data"
+// const api = "https://islom2202.github.io/My-first-completed-REST-API-methods/db.json"
 async function getData(){
   try {
     const response = await fetch(api);
