@@ -8,7 +8,7 @@ async function getData(){
   try {
     const response = await fetch(api);
     const data = await response.json();
-    create(data)
+    create(data.data) // because jasonified stream is still a at fulfiled STREAM stage
   } catch (error) {
     console.error(error);
   }
