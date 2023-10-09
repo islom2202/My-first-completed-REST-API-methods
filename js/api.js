@@ -2,13 +2,14 @@ import { create, citiesFilter, stateFilter, searchFilter } from "./crud.js"
 
 
 // GET data
-// const api = "https://users-table-list.onrender.com/data"
-let api = "https://islom2202.github.io/My-first-completed-REST-API-methods/db.json"
+const api = "https://users-table-list.onrender.com/data"
+// let api = "https://islom2202.github.io/My-first-completed-REST-API-methods/db.json"
 async function getData(){
   try {
     const response = await fetch(api);
     const data = await response.json();
-    create(data.data) // because jasonified stream is still a at fulfiled STREAM stage
+    console.log(data.data);
+    create(data) 
   } catch (error) {
     console.error(error);
   }
@@ -66,13 +67,14 @@ async function filterRegion (){
   try {
     let response = null;
       if(citiesFilter.value){
-      response = await fetch(`${api}?${'region'}=${citiesFilter.value}`)
+      response = await fetch(`${api}?${"region"}=${citiesFilter.value}`)
     }else{
       response = await fetch(api)
     }
     let data = await response.json();
+
     create(data)
-  } catch (error) {
+  } catch (error){
     console.error(error);
   }
 }
