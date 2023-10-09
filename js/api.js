@@ -2,7 +2,7 @@ import { create, citiesFilter, stateFilter, searchFilter } from "./crud.js"
 
 
 // GET data
-const api = "http://localhost:3000/data"
+const api = "https://users-table-list.onrender.com/data"
 async function getData(){
   try {
     const response = await fetch(api);
