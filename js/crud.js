@@ -32,7 +32,7 @@ let stateFilter = document.querySelector(".stateFilter");
 
 
 // Background color for body and sun-moon switching
-switchButton.onclick = () => {
+switchButton.ontouchstart = () => {
   body.className
     ? (body.classList.remove("dark"), (switchButton.innerHTML = "wb_sunny"))
     : (body.classList.add("dark"), (switchButton.innerHTML = "dark_mode"))
@@ -59,7 +59,7 @@ function create(data) {
                 <td>
                   ${element.phone}
                       <span class="material-symbols-outlined moreBtn" tabindex="0">more_horiz</span>
-                    <ul class="moreBtnOnclick">
+                    <ul class="moreBtnontouchstart">
                       <li class="viewProfile" tabindex="0">
                         <span class="material-symbols-outlined">person</span> View profile
                       </li>
@@ -82,17 +82,17 @@ function create(data) {
     
     // Let open or close moreBtn..........
     let moreBtn = tr.querySelector(".moreBtn")
-    let moreBtnOnclick = tr.querySelector(".moreBtnOnclick")
-    moreBtn.onclick = () => {
-      if(moreBtnOnclick.style.display == "none"){
-        moreBtnOnclick.style.display = "block"}
+    let moreBtnontouchstart = tr.querySelector(".moreBtnontouchstart")
+    moreBtn.ontouchstart = () => {
+      if(moreBtnontouchstart.style.display == "none"){
+        moreBtnontouchstart.style.display = "block"}
       else{
-        moreBtnOnclick.style.display = "none"
+        moreBtnontouchstart.style.display = "none"
       }
     }
     // Let open ProfileInfo
     let viewProfile = tr.querySelector(".viewProfile")
-    viewProfile.onclick = () => {
+    viewProfile.ontouchstart = () => {
       infoDialog.innerHTML = `     
       <div class="infoDialog__header">
         <span class="material-symbols-outlined closeInfo">close</span>
@@ -130,16 +130,16 @@ function create(data) {
       </table>
        `
       infoDialog.style.display = "flex"
-      moreBtnOnclick.style.display = "none"
+      moreBtnontouchstart.style.display = "none"
      let closeInfo = infoDialog.querySelector(".closeInfo")
-      closeInfo.onclick = function () {
+      closeInfo.ontouchstart = function () {
         infoDialog.style.display = "none"
       }
     }
     // EDIT........
     let editProfile = tr.querySelector(".editProfile")
-    editProfile.onclick = () =>{
-      moreBtnOnclick.style.display = "none"
+    editProfile.ontouchstart = () =>{
+      moreBtnontouchstart.style.display = "none"
       editDialog.style.display = "grid"
   
       editDialog__form.name.value = element.firstName;
@@ -166,14 +166,14 @@ function create(data) {
       }
       
       // Close edit dialog
-      closeEditDialog.onclick = () =>{
+      closeEditDialog.ontouchstart = () =>{
         editDialog.style.display = "none"
       }
     }
 
       // DELETE
       let deleteProfile = tr.querySelector(".deleteProfile")
-      deleteProfile.onclick = () =>{
+      deleteProfile.ontouchstart = () =>{
         deleteData(element.id)
       }
 ////////////
@@ -183,10 +183,10 @@ function create(data) {
   })
 }
       // ADD
-      addOpen.onclick = function () {
+      addOpen.ontouchstart = function () {
         addDialog.style.display = "grid"
       }
-      addClose.onclick = function () {
+      addClose.ontouchstart = function () {
         addDialog.style.display = "none"
       }
       addDialog__form.onsubmit = function () {
@@ -218,12 +218,12 @@ function create(data) {
       filterSearch()
     }
 //let set themes
-dark.onclick = () => {
+dark.ontouchstart = () => {
   body.classList.add("dark")
   dark.classList.add("activeTheme")
   light.classList.remove("activeTheme")
 }
-light.onclick = () => {
+light.ontouchstart = () => {
   body.classList.remove("dark")
   light.classList.add("activeTheme")
   dark.classList.remove("activeTheme")
