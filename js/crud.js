@@ -59,7 +59,7 @@ function create(data) {
                 <td>
                   ${element.phone}
                       <span class="material-symbols-outlined moreBtn" tabindex="0">more_horiz</span>
-                    <ul class="moreBtnonpointerdown">
+                    <ul class="moreBtnOnclick">
                       <li class="viewProfile" tabindex="0">
                         <span class="material-symbols-outlined">person</span> View profile
                       </li>
@@ -82,17 +82,17 @@ function create(data) {
     
     // Let open or close moreBtn..........
     let moreBtn = tr.querySelector(".moreBtn")
-    let moreBtnonpointerdown = tr.querySelector(".moreBtnonpointerdown")
+    let moreBtnOnclick = tr.querySelector(".moreBtnOnclick")
     moreBtn.onpointerdown = () => {
-      if(moreBtnonpointerdown.style.display == "none"){
-        moreBtnonpointerdown.style.display = "block"}
-      else{
-        moreBtnonpointerdown.style.display = "none"
+      if (moreBtnOnclick.style.display == "none") {
+        moreBtnOnclick.style.display = "block"
+      } else {
+        moreBtnOnclick.style.display = "none"
       }
     }
     // Let open ProfileInfo
     let viewProfile = tr.querySelector(".viewProfile")
-    viewProfile.onpointerdown = () => {
+    viewProfile.onclick = () => {
       infoDialog.innerHTML = `     
       <div class="infoDialog__header">
         <span class="material-symbols-outlined closeInfo">close</span>
@@ -130,16 +130,16 @@ function create(data) {
       </table>
        `
       infoDialog.style.display = "flex"
-      moreBtnonpointerdown.style.display = "none"
+      moreBtnOnclick.style.display = "none"
      let closeInfo = infoDialog.querySelector(".closeInfo")
-      closeInfo.onpointerdown = function () {
+      closeInfo.onclick = function () {
         infoDialog.style.display = "none"
       }
     }
     // EDIT........
     let editProfile = tr.querySelector(".editProfile")
-    editProfile.onpointerdown = () =>{
-      moreBtnonpointerdown.style.display = "none"
+    editProfile.onclick = () =>{
+      moreBtnOnclick.style.display = "none"
       editDialog.style.display = "grid"
   
       editDialog__form.name.value = element.firstName;
@@ -166,14 +166,14 @@ function create(data) {
       }
       
       // Close edit dialog
-      closeEditDialog.onpointerdown = () =>{
+      closeEditDialog.onclick = () =>{
         editDialog.style.display = "none"
       }
     }
 
       // DELETE
       let deleteProfile = tr.querySelector(".deleteProfile")
-      deleteProfile.onpointerdown = () =>{
+      deleteProfile.onclick = () =>{
         deleteData(element.id)
       }
 ////////////
@@ -183,10 +183,10 @@ function create(data) {
   })
 }
       // ADD
-      addOpen.onpointerdown = function () {
+      addOpen.onclick = function () {
         addDialog.style.display = "grid"
       }
-      addClose.onpointerdown = function () {
+      addClose.onclick = function () {
         addDialog.style.display = "none"
       }
       addDialog__form.onsubmit = function () {
@@ -218,12 +218,12 @@ function create(data) {
       filterSearch()
     }
 //let set themes
-dark.onpointerdown = () => {
+dark.onclick = () => {
   body.classList.add("dark")
   dark.classList.add("activeTheme")
   light.classList.remove("activeTheme")
 }
-light.onpointerdown = () => {
+light.onclick = () => {
   body.classList.remove("dark")
   light.classList.add("activeTheme")
   dark.classList.remove("activeTheme")
